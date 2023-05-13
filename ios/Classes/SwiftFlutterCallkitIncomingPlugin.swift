@@ -118,7 +118,7 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
         case "getDevicePushTokenVoIP":
             result(self.getDevicePushTokenVoIP())
             break;
-        case "startCallIncoming":
+        case "setCallAnswered":
             self.answerAction?.fulfill()
             result("OK")
             break
