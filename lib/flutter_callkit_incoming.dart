@@ -87,6 +87,10 @@ class FlutterCallkitIncoming {
   static Future startIncomingCall() async {
     await _channel.invokeMethod("setCallAnswered");
   }
+  
+  static Future answerCall(String id) async {
+    await _channel.invokeMethod("answerCall", {'id': id});
+  }
 
   static CallEvent? _receiveCallEvent(dynamic data) {
     Event? event;
