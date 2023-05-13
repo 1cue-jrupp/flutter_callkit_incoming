@@ -42,6 +42,19 @@ class CallManager: NSObject {
         })
     }
     
+    func answerCall(uuid: String){
+        let answerAction: CXAnswerCallAction = CXAnswerCallAction(call: uuid)
+        let transaction: CXTransaction = CXTransaction(action: answerAction)
+            
+        callController.request(transaction) { error in
+            if let error = error {
+                NSLog("Error!!!")
+             } else {
+                NSLog("Success")
+            }
+        }   
+    }
+    
     func endCall(call: Call) {
         let endCallAction = CXEndCallAction(call: call.uuid)
         let callTransaction = CXTransaction()
