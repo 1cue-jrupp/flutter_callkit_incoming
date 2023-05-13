@@ -39,7 +39,6 @@ class CallManager: NSObject {
             callUpdate.localizedCallerName = data.nameCaller
             self.sharedProvider?.reportCall(with: uuid!, updated: callUpdate)
         })
-        startCallAction.fulfill()
     }
     
     func endCall(call: Call) {
