@@ -85,7 +85,7 @@ class FlutterCallkitIncoming {
   /// On iOS: start connection timer
   /// On Android: not implemented
   static Future startIncomingCall() async {
-    await _channel.invokeMethod("startCallIncoming");
+    await _channel.invokeMethod("setCallAnswered");
   }
 
   static CallEvent? _receiveCallEvent(dynamic data) {
