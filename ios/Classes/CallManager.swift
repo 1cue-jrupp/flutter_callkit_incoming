@@ -38,7 +38,7 @@ class CallManager: NSObject {
             callUpdate.hasVideo = data.type > 0 ? true : false
             callUpdate.localizedCallerName = data.nameCaller
             self.sharedProvider?.reportCall(with: uuid!, updated: callUpdate)
-            self.sharedProvider?.reportOutgoingCall(with: uuid!)
+            self.sharedProvider?.reportOutgoingCall(with: uuid!, connectedAt: null)
         })
     }
     
