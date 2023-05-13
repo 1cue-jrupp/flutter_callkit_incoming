@@ -108,6 +108,17 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
             }
             result("OK")
             break
+        case "answerCall":
+            guard let args = call.arguments else {
+                result("OK")
+                return
+            }
+            if let getArgs = args as? [String: Any] {
+                self.data = Data(args: getArgs)
+                self.answerCall(self.data!)
+            }
+            result("OK")
+            break
         case "activeCalls":
             result(self.callManager?.activeCalls())
             break;
@@ -190,6 +201,12 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
             call = Call(uuid: UUID(uuidString: data.uuid)!, data: data)
         }
         self.callManager?.endCall(call: call!)
+    }
+    
+    @objc public func answerCall(_ data: Data) {
+        var call: Call? = nil
+        call = Call(uuid: UUID(uuidString: data.uuid)!, data: data)
+        self.callManager?.answerCall(call: call!)
     }
     
     @objc public func activeCalls() -> [[String: Any]]? {
